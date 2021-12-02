@@ -4,13 +4,19 @@ import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel : ViewModel() {
     private var count = 0
+    private var addValue = 0
 
     public fun getcount() : Int {
         return count
     }
 
+    public fun setValue(value : Int)
+    {
+        addValue =  value
+    }
     public fun getUpdatedCount() : Int {
-        return ++count
+        count += addValue
+        return count
     }
 
 }
