@@ -2,19 +2,18 @@ package com.example.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel(startingTotal : Int) : ViewModel() {
     private var count = 0
-    private var addValue = 0
 
-    public fun getcount() : Int {
+    init{
+        count = startingTotal
+    }
+
+    fun getcount() : Int {
         return count
     }
 
-    public fun setValue(value : Int)
-    {
-        addValue =  value
-    }
-    public fun getUpdatedCount() : Int {
+    fun getUpdatedCount(addValue : Int) : Int {
         count += addValue
         return count
     }

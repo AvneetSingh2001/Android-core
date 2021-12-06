@@ -14,21 +14,21 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var viewModel : MainActivityViewModel
 
-
+    lateinit var viewModelFactory : MainActivityViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModelFactory = MainActivityViewModelFactory(25)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
 
         binding.textView.text = viewModel.getcount().toString()
 
 
         binding.button.setOnClickListener {
 
-            var value : Editable? = binding.editText.editableText
+            var value : Int = Integer.parseInt(binding.editText.editableText.toString())
             if(value != null)
-                    viewModel.setValue(Integer.parseInt(value.toString()))
-            binding.textView.text = viewModel.getUpdatedCount().toString()
+                binding.textView.text = viewModel.getUpdatedCount(value).toString()
         }
     }
 
