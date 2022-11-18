@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.developerx.roomdemo.SubscriberViewModel" />
+
+    </data>
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/etName"
+        android:text="@={myViewModel.inputName}"
+        android:layout_marginBottom="5dp"
+        android:hint="Subsriber's Name"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/etEmail"
+        android:text="@={myViewModel.inputEmail}"
+        android:hint="Subscriber's Email"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/etContact"
+        android:text="@={myViewModel.inputContact}"
+        android:hint="Subscriber's Email"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={myViewModel.createOrUpdateBtnTxt}"
+            android:onClick="@{()->myViewModel.createOrUpdate()}"
+            android:id="@+id/btCreateOrUpdate"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:onClick="@{() -> myViewModel.clearOrDelete()}"
+            android:text="@={myViewModel.clearOrDeleteBtnTxt}"
+            android:layout_height="wrap_content"
+            android:id="@+id/btDeleteOrClear"/>
+
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/rvSubscribers"/>
+
+</LinearLayout>
+</layout>
