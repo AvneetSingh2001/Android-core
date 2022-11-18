@@ -8,16 +8,16 @@ import java.util.concurrent.Flow
 interface SubscriberDAO {
 
     @Insert
-    suspend fun insertSubscriber(subscriber: subscriber)
+    suspend fun insertSubscriber(subscriber: subscriber): Long
 
     @Update
-    suspend fun updateSubscriber(subscriber: subscriber)
+    suspend fun updateSubscriber(subscriber: subscriber): Int
 
     @Delete
-    suspend fun deleteSubscriber(subscriber: subscriber)
+    suspend fun deleteSubscriber(subscriber: subscriber): Int
 
     @Query("DELETE FROM subscriber_data_table")
-    suspend fun deleteAll()
+    suspend fun deleteAll(): Int
 
     @Query("SELECT * FROM subscriber_data_table")
     fun getAllSubscriber() : LiveData<List<subscriber>>
